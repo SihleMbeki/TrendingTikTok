@@ -71,7 +71,7 @@
 					<version>2.22.2</version>
 					<configuration>
 						<suiteXmlFiles>
-							<suiteXmlFile>src/test/resources/AllTests.tng.xml</suiteXmlFile>
+							<suiteXmlFile>xmlSuite.xml</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
