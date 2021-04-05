@@ -2,6 +2,7 @@
 
 <suite name="Keyword Planner Volume">
 	<test name="All">
+	<parameter name="testNG" value="test"/>
 		<classes>
 			<class name="TestNG.testautomation.testing.AppTest"></class>
 		</classes>
