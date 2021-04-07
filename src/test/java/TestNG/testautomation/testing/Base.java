@@ -2,10 +2,12 @@ package TestNG.testautomation.testing;
 
 import java.lang.reflect.Method;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentTest;
 
@@ -13,9 +15,11 @@ import Utilities.ExtentReport;
 
 public class Base {
 	ExtentTest test;
-
+	static Logger log = Logger.getLogger(Base.class);
 	@BeforeSuite
 	public void suiteSetup() {
+		DOMConfigurator.configure("log4j.xml");
+		BasicConfigurator.configure();
 		ExtentReport.foldername();
 		ExtentReport.createExtentReports();
 	}
