@@ -3,7 +3,9 @@ package TestNG.testautomation.testing;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class AppTest {
+import com.aventstack.extentreports.Status;
+
+public class AppTest extends Base {
 
 	@Test
 	@Parameters("testNG")
@@ -12,6 +14,7 @@ public class AppTest {
 			String test = System.getenv("jenkins");
 			System.out.println(test);
 		}
+		test.log(Status.PASS, test2);
 		System.out.println("Parameter : "+test2);
 		assert Boolean.TRUE;
 	}
