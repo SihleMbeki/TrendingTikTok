@@ -12,12 +12,15 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentTest;
 
 import Utilities.ExtentReport;
+import Utilities.SeleniumDriver;
 
 public class Base {
 	ExtentTest test;
-	static Logger log = Logger.getLogger(Base.class);
+	SeleniumDriver driver;
+	public static Logger log = Logger.getLogger(Base.class);
 	@BeforeSuite
 	public void suiteSetup() {
+		driver=new SeleniumDriver();
 		DOMConfigurator.configure("log4j.xml");
 		BasicConfigurator.configure();
 		ExtentReport.foldername();
