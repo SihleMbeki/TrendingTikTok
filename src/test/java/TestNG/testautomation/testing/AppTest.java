@@ -22,6 +22,7 @@ public class AppTest extends Base {
 		
 		test.log(Status.PASS, test2);
 		test.pass("String",MediaEntityBuilder.createScreenCaptureFromPath(driver.takeScreenShot()).build());
+		writer.write("Column1,Column2");
 		System.out.println("Parameter : " + test2);
 		log.debug("This is a debug log");
 		log.info("This is a info log");

@@ -1,5 +1,7 @@
 package TestNG.testautomation.testing;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 import org.apache.log4j.BasicConfigurator;
@@ -17,6 +19,7 @@ import Utilities.SeleniumDriver;
 public class Base {
 	ExtentTest test;
 	SeleniumDriver driver;
+	PrintWriter writer=null;
 	public static Logger log = Logger.getLogger(Base.class);
 	@BeforeSuite
 	public void suiteSetup() {
@@ -25,6 +28,12 @@ public class Base {
 		BasicConfigurator.configure();
 		ExtentReport.foldername();
 		ExtentReport.createExtentReports();
+		try {
+			writer=new PrintWriter(ExtentReport.getDirectory()+"/testData.csv");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@BeforeMethod
@@ -35,6 +44,7 @@ public class Base {
 	@AfterSuite
 	public void teardown() {
 		ExtentReport.closeReport();
+		writer.close();
 	}
 	/*
 	 * 
