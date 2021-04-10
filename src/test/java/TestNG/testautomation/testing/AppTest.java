@@ -15,7 +15,7 @@ public class AppTest extends Base {
 	@Test
 	@Parameters("testNG")
 	public void test(String test2) throws IOException {
-		driver.setup();
+		
 		//WebDriverManager.chromedriver().driverVersion("81.0.4044.138").setup();
 		if (System.getenv("jenkins") != null) {
 			String test = System.getenv("jenkins");
@@ -25,14 +25,14 @@ public class AppTest extends Base {
 		Login login=new Login(driver.getDriver());
 		login.submitUsername("sihle.matanzima@gmail.com");
 		
-		test.log(Status.PASS, test2);
-		test.pass("String",MediaEntityBuilder.createScreenCaptureFromPath(driver.takeScreenShot()).build());
+		getTest().log(Status.PASS, test2);
+		getTest().pass("String",MediaEntityBuilder.createScreenCaptureFromPath(driver.takeScreenShot()).build());
 		writer.write("Column1,Column2");
 		System.out.println("Parameter : " + test2);
 		log.debug("This is a debug log");
 		log.info("This is a info log");
 		log.error("This is a error log");
-		driver.getDriver().close();
+		
 		assert Boolean.TRUE;
 	}
 
