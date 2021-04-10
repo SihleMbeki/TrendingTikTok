@@ -29,7 +29,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumDriver {
 	private WebDriver driver;
-	private String error;
+	private String error=null;
 
 	public void setup() {
 		try {
@@ -181,6 +181,10 @@ public class SeleniumDriver {
 			Assert.fail();
 			return null;
 		}
+	}
+	
+	public String getError() {
+		return error;
 	}
 
 

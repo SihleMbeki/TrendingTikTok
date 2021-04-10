@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -17,13 +18,12 @@ import Utilities.ExtentReport;
 import Utilities.SeleniumDriver;
 
 public class Base {
-	ExtentTest test;
-	SeleniumDriver driver;
+	protected static ExtentTest test;
+	protected static SeleniumDriver driver=null;
 	PrintWriter writer=null;
 	public static Logger log = Logger.getLogger(Base.class);
 	@BeforeSuite
 	public void suiteSetup() {
-		driver=new SeleniumDriver();
 		DOMConfigurator.configure("log4j.xml");
 		BasicConfigurator.configure();
 		ExtentReport.foldername();
@@ -35,10 +35,16 @@ public class Base {
 			e.printStackTrace();
 		}
 	}
+	protected void setTestItem(ExtentTest test) {
+	 this.test=test;
+	}
 
-	@BeforeMethod
-	public void setTest(Method testMethod) {
-		test = ExtentReport.createTest(testMethod.getName());
+	public ExtentTest getTest() {
+		return test;
+	}
+	
+	public SeleniumDriver getDriver() {
+		return driver;
 	}
 
 	@AfterSuite

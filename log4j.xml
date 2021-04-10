@@ -30,7 +30,7 @@
 	</appender>
 
 	<root>
-		<priority value="error" />
+		<!--  <priority value="error" />-->
 		<appender-ref ref="console" />
 		<appender-ref ref="fileAppender" />
 	</root>
