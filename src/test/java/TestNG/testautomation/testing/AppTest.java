@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
+import PageObjects.Login;
+
 public class AppTest extends Base {
 
 	@Test
@@ -19,6 +21,9 @@ public class AppTest extends Base {
 			String test = System.getenv("jenkins");
 			System.out.println(test);
 		}
+		driver.getDriver().get("https://accounts.google.com/signin/v2/identifier?service=adwords&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+		Login login=new Login(driver.getDriver());
+		login.submitUsername("sihle.matanzima@gmail.com");
 		
 		test.log(Status.PASS, test2);
 		test.pass("String",MediaEntityBuilder.createScreenCaptureFromPath(driver.takeScreenShot()).build());

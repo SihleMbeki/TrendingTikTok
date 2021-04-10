@@ -22,6 +22,7 @@ public class ExtentReport {
 		htmlReporter.config().setReportName("Reporting V1");
 		reports = new ExtentReports();
 		reports.attachReporter(htmlReporter);
+	
 	}
 
 	public static synchronized ExtentTest createTest(String testName) {
