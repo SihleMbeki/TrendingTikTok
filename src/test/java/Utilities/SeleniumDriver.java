@@ -37,6 +37,8 @@ public class SeleniumDriver {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximized");
+			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+			//options.setExperimentalOption("debuggerAddress","localhost:9222");
 			driver = new ChromeDriver(options);
 			driver.manage().timeouts().implicitlyWait(tenSeconds);
 
