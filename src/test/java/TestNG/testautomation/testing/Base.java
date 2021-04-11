@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import Utilities.Config;
 import Utilities.ExtentReport;
 import Utilities.SeleniumDriver;
 
@@ -24,12 +25,12 @@ public class Base {
 	public static Logger log = Logger.getLogger(Base.class);
 	@BeforeSuite
 	public void suiteSetup() {
-		DOMConfigurator.configure("log4j.xml");
+		DOMConfigurator.configure(Config.Log4J.getConfig());
 		BasicConfigurator.configure();
 		ExtentReport.foldername();
 		ExtentReport.createExtentReports();
 		try {
-			writer=new PrintWriter(ExtentReport.getDirectory()+"/testData.csv");
+			writer=new PrintWriter(ExtentReport.getDirectory()+"/"+Config.CSV.getConfig());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
